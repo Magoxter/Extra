@@ -51,12 +51,10 @@ int main (void) {
   } printf("Frequencia... \n");
  for (k = 1; k <= n; k++) {
    for (l = 0; l < n; l++) {
-     for (i = 0; i < n; i++) {
-    for (c = 0; c < num.lim[valor].total; c++) {
+    for (c = 0; c < num.lim[l].total; c++) {
         if (seg[l][c] == k)
           cont++;
     }
-     }
    } printf("%d - %d/%d\n", k, cont, n);
  }
  return 0;
