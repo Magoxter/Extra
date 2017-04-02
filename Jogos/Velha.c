@@ -3,6 +3,8 @@
 
 void jogo (char[][5]);
 void regras (void);
+void ranking (int);
+void apresenta (void);
 void jogar (void);
 int vitoria (char[][5]);
 int lin (char[][5]);
@@ -10,15 +12,23 @@ int col (char[][5]);
 int dgn (char[][5]);
 int sec (char[][5]);
 
+int jogX = 0;
+int jogO = 0;
+
 int main (void) {
   int op;
+  int jog;
+      jog = 0;
+    printf("\n");
     printf("JOGO DA VELHA: \n");
     printf("1- Regras\n");
     printf("2- Jogar\n");
-    printf("3- Sair\n");
+    printf("3- Tutorial\n");
+    printf("4- Ranking\n");
+    printf("5- Sair\n");
     printf("\n");
      scanf("%d", &op);
- while (op < 3) {
+ while (op < 5) {
   switch (op) {
     case 1:
       regras();
@@ -26,13 +36,22 @@ int main (void) {
     case 2:
       jogar();
      break;
+    case 3:
+      apresenta();
+     break;
+    case 4:
+      ranking(jog);
+     break;
     default:
      break;
-  } printf("\n");
+  }   jog++;
+    printf("\n");
     printf("JOGO DA VELHA: \n");
     printf("1- Regras\n");
     printf("2- Jogar\n");
-    printf("3- Sair\n");
+    printf("3- Tutorial\n");
+    printf("4- Ranking\n");
+    printf("5- Sair\n");
     printf("\n");
      scanf("%d", &op);
  } printf("Fim Operacao\n");
@@ -72,13 +91,14 @@ void jogar (void) {
       jogo(v);
     } else {
          printf("\nOcupado\n");
+         printf("\n");
         e++;  }
   } else {
       printf("\nInexistente\n");
       printf("Deseja algo?\n");
       printf("1- Voltar ao Menu\n");
       printf("2- Finalizar Jogo\n");
-      printf("3- Nada, vc apertou errado d otario msm.?!\n");
+      printf("3- Continuar Jogo\n");
        scanf("%d", &m);
       printf("\n");
     if (m == 1)
@@ -93,7 +113,7 @@ void jogar (void) {
      printf("\nGanhador X\n");
    if (n == 2)
      printf("\nGanhador O\n");
-    e = 0;
+    e = 0; ranking(n);
   } else if (!n && !e)
    printf("Deu Velha!!\n");
  }
@@ -237,5 +257,32 @@ void jogo (char m[][5]) {
   printf("%c | ", m[2][1]);
   printf("%c\n" , m[2][2]);
   printf("\n");
+ return;
+}
+
+void apresenta (void) {
+  int  n,i,k;
+  char v[5][5];
+    n = 3;
+ for (i = 0; i < n; i++)
+  for (k = 0; k < n; k++)
+     v[i][k] = ' ';
+  jogo(v);
+ return;
+}
+
+
+void ranking (int k) {
+ if (k) {
+   if (k == 1)
+     jogX++;
+   if (k == 2)
+     jogO++;
+    printf("\n");
+    printf("Jogador X: %dpts\n", jogX);
+    printf("Jogador O: %dpts\n", jogO);
+ } else {
+     printf("Nao houve Jogos ainda\n");
+ }
  return;
 }
